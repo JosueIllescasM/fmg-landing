@@ -185,6 +185,13 @@ function HappinessBadge({ goContact }) {
     return () => clearInterval(t);
   }, []);
 
+  const DIMS = [
+    { label: "Wellness", desc: "Bienestar integral del equipo", color: "#4CAF50", icon: "◎" },
+    { label: "Engagement", desc: "Compromiso y cultura organizacional", color: "#2196F3", icon: "◎" },
+    { label: "Personal Worth", desc: "Valor y desarrollo personal", color: "#9C27B0", icon: "◎" },
+    { label: "Sustainability", desc: "Impacto sostenible a largo plazo", color: "#FF9800", icon: "◎" },
+  ];
+
   return (
     <>
       {/* Floating pill button */}
@@ -193,28 +200,28 @@ function HappinessBadge({ goContact }) {
         style={{
           position: "fixed", bottom: "2rem", right: "2rem", zIndex: 800,
           background: "linear-gradient(135deg,#0d0d1f 0%,#1a1040 50%,#0d0d1f 100%)",
-          borderRadius: "3rem", padding: "0.6rem 1rem 0.6rem 0.7rem",
+          borderRadius: "3rem", padding: "0.55rem 1rem 0.55rem 0.55rem",
           border: "1px solid rgba(255,179,0,0.3)",
           boxShadow: pulse
             ? "0 0 0 6px rgba(255,179,0,0.08), 0 12px 40px rgba(255,179,0,0.2), 0 4px 16px rgba(0,0,0,0.5)"
             : "0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(255,179,0,0.1)",
           cursor: "pointer",
-          display: "flex", alignItems: "center", gap: "0.65rem",
+          display: "flex", alignItems: "center", gap: "0.6rem",
           transition: "box-shadow 0.6s ease, transform 0.2s ease",
           userSelect: "none",
         }}
         onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05) translateY(-2px)"}
         onMouseLeave={e => e.currentTarget.style.transform = "scale(1) translateY(0)"}
       >
-        {/* Gold star icon */}
-        <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "linear-gradient(135deg,#FFB300,#FF6B00)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 2px 8px rgba(255,179,0,0.4)" }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg>
-        </div>
+        {/* Logo color real sin filtros */}
+        <img
+          src={logoColor}
+          alt="Happiness Club"
+          style={{ height: "28px", width: "auto", objectFit: "contain", flexShrink: 0 }}
+        />
         <div>
-          <div style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.45)", letterSpacing: "0.12em", textTransform: "uppercase", lineHeight: 1.2 }}>Happiness Club</div>
-          <div style={{ fontSize: "0.78rem", fontWeight: 800, color: "#FFB300", letterSpacing: "0.06em", lineHeight: 1.2 }}>Miembro BLACK</div>
+          <div style={{ fontSize: "0.58rem", color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "uppercase", lineHeight: 1.2 }}>Miembro certificado</div>
+          <div style={{ fontSize: "0.78rem", fontWeight: 800, color: "#FFB300", letterSpacing: "0.06em", lineHeight: 1.2 }}>BLACK ★</div>
         </div>
       </div>
 
@@ -222,83 +229,84 @@ function HappinessBadge({ goContact }) {
       {open && (
         <div
           onClick={() => setOpen(false)}
-          style={{ position: "fixed", inset: 0, zIndex: 2000, background: "rgba(0,0,0,0.75)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}
+          style={{ position: "fixed", inset: 0, zIndex: 2000, background: "rgba(0,0,0,0.8)", backdropFilter: "blur(10px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}
         >
           <div
             onClick={e => e.stopPropagation()}
             style={{
-              position: "relative", width: "100%", maxWidth: "440px",
-              background: "linear-gradient(160deg,#080818 0%,#12102a 40%,#0a1410 100%)",
+              position: "relative", width: "100%", maxWidth: "460px",
+              background: "linear-gradient(160deg,#08080f 0%,#0f0d20 50%,#080f0a 100%)",
               borderRadius: "1.75rem", overflow: "hidden",
-              border: "1px solid rgba(255,179,0,0.2)",
-              boxShadow: "0 0 60px rgba(255,179,0,0.08), 0 40px 80px rgba(0,0,0,0.7)",
+              border: "1px solid rgba(255,179,0,0.25)",
+              boxShadow: "0 0 80px rgba(255,179,0,0.06), 0 40px 80px rgba(0,0,0,0.8)",
             }}
           >
-            {/* Gold gradient top strip */}
+            {/* Gold top strip */}
             <div style={{ height: "4px", background: "linear-gradient(90deg,transparent,#FFB300,#FFD700,#FFB300,transparent)" }} />
 
-            {/* Subtle bg texture dots */}
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle, rgba(255,179,0,0.03) 1px, transparent 1px)", backgroundSize: "24px 24px", pointerEvents: "none" }} />
+            {/* Dot texture */}
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle, rgba(255,179,0,0.025) 1px, transparent 1px)", backgroundSize: "22px 22px", pointerEvents: "none" }} />
 
-            <div style={{ padding: "2.5rem 2.5rem 2rem", position: "relative" }}>
+            <div style={{ padding: "2rem 2.2rem 1.8rem", position: "relative" }}>
               {/* Close */}
-              <button onClick={() => setOpen(false)} style={{ position: "absolute", top: "1.2rem", right: "1.2rem", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "50%", width: "30px", height: "30px", cursor: "pointer", color: "rgba(255,255,255,0.4)", fontSize: "1.1rem", display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1 }}>×</button>
+              <button onClick={() => setOpen(false)} style={{ position: "absolute", top: "1rem", right: "1rem", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "50%", width: "28px", height: "28px", cursor: "pointer", color: "rgba(255,255,255,0.4)", fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
 
-              {/* Certificate label */}
-              <div style={{ textAlign: "center", marginBottom: "1.8rem" }}>
-                <div style={{ fontSize: "0.58rem", textTransform: "uppercase", letterSpacing: "0.22em", color: "rgba(255,179,0,0.5)", marginBottom: "1.2rem" }}>Certificado oficial de membresía</div>
+              {/* Header */}
+              <div style={{ textAlign: "center", marginBottom: "1.6rem" }}>
+                <div style={{ fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "rgba(255,179,0,0.45)", marginBottom: "1rem" }}>Certificado oficial de membresía</div>
 
-                {/* Happiness Club logo — real image, color version */}
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.4rem" }}>
+                {/* Logo COLOR real — sin ningún filtro */}
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "1.2rem", padding: "0.8rem 1.5rem", background: "rgba(255,255,255,0.96)", borderRadius: "0.9rem" }}>
                   <img
                     src={logoColor}
                     alt="Happiness Club"
-                    style={{ height: "36px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.92 }}
+                    style={{ height: "38px", width: "auto", objectFit: "contain" }}
                   />
                 </div>
 
                 {/* BLACK badge */}
-                <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "linear-gradient(135deg,#FFB300,#FF8C00)", borderRadius: "100px", padding: "0.45rem 1.4rem", boxShadow: "0 4px 18px rgba(255,179,0,0.35)" }}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                  <span style={{ fontSize: "0.8rem", fontWeight: 800, color: "#fff", letterSpacing: "0.14em" }}>MIEMBRO BLACK</span>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "linear-gradient(135deg,#FFB300,#FF8C00)", borderRadius: "100px", padding: "0.4rem 1.2rem", boxShadow: "0 4px 18px rgba(255,179,0,0.35)" }}>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                  <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "#fff", letterSpacing: "0.12em" }}>MIEMBRO BLACK</span>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
                 </div>
               </div>
 
               {/* Divider */}
-              <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,rgba(255,179,0,0.2),transparent)", marginBottom: "1.6rem" }} />
+              <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,rgba(255,179,0,0.2),transparent)", marginBottom: "1.4rem" }} />
 
               {/* Member name */}
-              <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: "1rem", padding: "1.2rem 1.5rem", border: "1px solid rgba(255,255,255,0.06)", marginBottom: "1.4rem", textAlign: "center" }}>
-                <div style={{ fontSize: "0.6rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,179,0,0.45)", marginBottom: "0.5rem" }}>Otorgado a</div>
-                <div style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.01em" }}>Facilities Management</div>
-                <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.45)", marginTop: "0.1rem" }}>de Guatemala S.A.</div>
+              <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: "0.9rem", padding: "1rem 1.4rem", border: "1px solid rgba(255,255,255,0.06)", marginBottom: "1.4rem", textAlign: "center" }}>
+                <div style={{ fontSize: "0.58rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,179,0,0.4)", marginBottom: "0.4rem" }}>Otorgado a</div>
+                <div style={{ fontSize: "1rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.01em" }}>Facilities Management</div>
+                <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.4)", marginTop: "0.1rem" }}>de Guatemala S.A.</div>
               </div>
 
-              {/* Benefits grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.6rem", marginBottom: "1.6rem" }}>
-                {[
-                  { label: "Red ejecutiva élite", icon: "◈" },
-                  { label: "Eventos exclusivos", icon: "◈" },
-                  { label: "Mentoría directiva", icon: "◈" },
-                  { label: "Acceso priority", icon: "◈" },
-                ].map(b => (
-                  <div key={b.label} style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: "0.55rem 0.8rem", background: "rgba(255,179,0,0.04)", borderRadius: "0.6rem", border: "1px solid rgba(255,179,0,0.08)" }}>
-                    <span style={{ color: "#FFB300", fontSize: "0.65rem" }}>{b.icon}</span>
-                    <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.55)" }}>{b.label}</span>
-                  </div>
-                ))}
+              {/* 4 Dimensiones */}
+              <div style={{ marginBottom: "1.4rem" }}>
+                <div style={{ fontSize: "0.58rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,179,0,0.4)", marginBottom: "0.75rem", textAlign: "center" }}>Certificación en 4 dimensiones</div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.55rem" }}>
+                  {DIMS.map(d => (
+                    <div key={d.label} style={{ display: "flex", alignItems: "flex-start", gap: "0.55rem", padding: "0.7rem 0.85rem", background: "rgba(255,255,255,0.03)", borderRadius: "0.7rem", border: `1px solid ${d.color}22` }}>
+                      <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: d.color, flexShrink: 0, marginTop: "3px", boxShadow: `0 0 6px ${d.color}88` }} />
+                      <div>
+                        <div style={{ fontSize: "0.72rem", fontWeight: 700, color: "#fff", lineHeight: 1.2 }}>{d.label}</div>
+                        <div style={{ fontSize: "0.62rem", color: "rgba(255,255,255,0.38)", lineHeight: 1.3, marginTop: "0.15rem" }}>{d.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Bottom divider */}
-              <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,rgba(255,179,0,0.15),transparent)", marginBottom: "1.2rem" }} />
+              <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,rgba(255,179,0,0.12),transparent)", marginBottom: "1rem" }} />
 
-              <div style={{ textAlign: "center", fontSize: "0.58rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.18)" }}>
+              <div style={{ textAlign: "center", fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.15)" }}>
                 Certificación vigente · Guatemala {new Date().getFullYear()}
               </div>
             </div>
 
-            {/* Gold gradient bottom strip */}
+            {/* Gold bottom strip */}
             <div style={{ height: "3px", background: "linear-gradient(90deg,transparent,#FFB300,#FFD700,#FFB300,transparent)" }} />
           </div>
         </div>
