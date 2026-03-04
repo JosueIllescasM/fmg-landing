@@ -827,3 +827,9 @@ export default function App() {
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: DG, display: "inline-block", animation: "pdot 2s ease infinite" }} />
               <span style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.28)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Sistema operativo · Activo</span>
             </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
