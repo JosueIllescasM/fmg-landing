@@ -572,6 +572,18 @@ export default function App() {
                 <div style={{ fontSize: "1.5rem", fontWeight: 800, color: GN, letterSpacing: "-0.02em", fontFamily: "'JetBrains Mono',monospace" }}>52WPPM</div>
                 <div style={{ fontSize: "0.68rem", color: "#888" }}>Work Package Planning & Mgmt</div>
               </div>
+              {/* Ingeniería Financiera Badge */}
+              <div style={{ background: "linear-gradient(135deg,#0a0f1a,#111827)", borderRadius: "1.4rem", padding: "1rem 1.6rem", border: "1px solid rgba(74,124,89,0.25)" }}>
+                <div style={{ fontSize: "0.6rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "#86BC25", marginBottom: "0.2rem" }}>Análisis propietario</div>
+                <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#86BC25", letterSpacing: "-0.02em", fontFamily: "'JetBrains Mono',monospace" }}>ING·FIN</div>
+                <div style={{ fontSize: "0.68rem", color: "#888" }}>Ingeniería Financiera</div>
+              </div>
+              {/* Votación JD Badge */}
+              <div style={{ background: "linear-gradient(135deg,#0d1a0f,#162414)", borderRadius: "1.4rem", padding: "1rem 1.6rem", border: "1px solid rgba(74,124,89,0.25)" }}>
+                <div style={{ fontSize: "0.6rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.45)", marginBottom: "0.2rem" }}>Blindaje decisional</div>
+                <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", fontFamily: "'JetBrains Mono',monospace" }}>VOT·JD</div>
+                <div style={{ fontSize: "0.68rem", color: "#888" }}>Sistema de Votación JD</div>
+              </div>
             </div>
           </div>
 
@@ -667,9 +679,9 @@ export default function App() {
                   ["La Muralla China", "Administración recomienda y audita. JD decide. Línea infranqueable que protege a ambas partes."],
                   ["Acta digital inmutable", "Sello de tiempo en cada votación. Ante cualquier cuestionamiento en Asamblea, la JD responde con datos."],
                 ].map(([t, d]) => (
-                  <div key={t} style={{ background: "rgba(255,255,255,0.06)", borderRadius: "0.9rem", padding: "0.85rem 1rem", border: "1px solid rgba(255,255,255,0.1)" }}>
+                  <div key={t} style={{ background: "rgba(0,0,0,0.32)", borderRadius: "0.9rem", padding: "0.85rem 1rem", border: "1px solid rgba(0,0,0,0.25)" }}>
                     <div style={{ fontSize: "0.72rem", fontWeight: 700, color: "#fff", marginBottom: "0.2rem" }}>{t}</div>
-                    <div style={{ fontSize: "0.63rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.5 }}>{d}</div>
+                    <div style={{ fontSize: "0.63rem", color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>{d}</div>
                   </div>
                 ))}
               </div>
@@ -693,7 +705,7 @@ export default function App() {
       </section>
 
       {/* ── STACK ── */}
-      <div ref={stackRef} style={{ height: "260vh", position: "relative" }}>
+      <div ref={stackRef} style={{ height: "320vh", position: "relative" }}>
         <StackCard idx={0} active={activeCard} bg={`linear-gradient(135deg,${GN},#2d4f3a)`} label="Estructura viva">
           <div style={{ display: "flex", alignItems: "center", gap: "3rem", flexWrap: "wrap" }}>
             <div style={{ flex: 1, minWidth: "200px" }}>
