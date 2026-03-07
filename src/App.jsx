@@ -425,8 +425,11 @@ export default function App() {
 
       {/* ── NAV ── */}
       <nav style={{ position: "fixed", top: "1.1rem", left: "50%", transform: "translateX(-50%)", zIndex: 1000, width: "min(940px,91vw)", background: navScrolled ? "rgba(255,255,255,0.92)" : "transparent", backdropFilter: navScrolled ? "blur(18px) saturate(1.6)" : "none", borderRadius: "100px", border: navScrolled ? "1px solid rgba(74,124,89,0.14)" : "1px solid transparent", boxShadow: navScrolled ? "0 6px 36px rgba(0,0,0,0.09)" : "none", transition: "all 0.45s ease", padding: "0.65rem 1.4rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <img src={navScrolled ? logoColor : logoWhite} alt="FMG" style={{ height: "28px", width: "auto", objectFit: "contain", transition: "opacity 0.3s" }} />
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div style={{ width: "28px", height: "28px", borderRadius: "6px", background: "linear-gradient(135deg,#4a7c59,#2d5a3d)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <span style={{ fontSize: "0.52rem", fontWeight: 900, color: "#fff", letterSpacing: "0.02em" }}>FMG</span>
+          </div>
+          <span style={{ fontSize: "0.82rem", fontWeight: 800, color: navScrolled ? "#1A1A1A" : "#fff", letterSpacing: "-0.01em", transition: "color 0.3s" }}>Facilities Management</span>
         </div>
         <div style={{ display: "flex", gap: "1.6rem", alignItems: "center" }}>
           {[["Servicios", secServicios], ["Metodología", secMetodologia], ["Clientes", secClientes], ["Contacto", secContacto]].map(([l, r]) => (
@@ -798,18 +801,18 @@ export default function App() {
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "2.5rem", marginBottom: "2.5rem" }}>
             <div>
-              <img src={logoWhite} alt="FMG" style={{ height: "28px", width: "auto", objectFit: "contain", marginBottom: "0.9rem", filter: "brightness(0) invert(1)" }} />
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.9rem" }}>
+                <div style={{ width: "28px", height: "28px", borderRadius: "6px", background: "linear-gradient(135deg,#4a7c59,#2d5a3d)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <span style={{ fontSize: "0.52rem", fontWeight: 900, color: "#fff", letterSpacing: "0.02em" }}>FMG</span>
+                </div>
+                <span style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.01em" }}>Facilities Management</span>
+              </div>
               <p style={{ fontSize: "0.76rem", color: "rgba(255,255,255,0.28)", lineHeight: 1.82, maxWidth: "230px", marginBottom: "0.9rem" }}>Facilities Management de Guatemala S.A. Gestión de edificios de alto estándar.</p>
               <div style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.2)", lineHeight: 1.8, marginBottom: "1.1rem" }}>
                 📍 25 Av. 1-89, Vista Hermosa 2,<br />
                 <span style={{ paddingLeft: "18px" }}>Edif. Insigne, Nivel 16, Of. 1602</span>
               </div>
-              {/* Happiness Club footer badge */}
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(255,179,0,0.07)", borderRadius: "0.6rem", padding: "0.4rem 0.75rem", border: "1px solid rgba(255,179,0,0.14)", cursor: "pointer" }}>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="#FFB300"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                <img src={logoWhite} alt="Happiness Club" style={{ height: "13px", width: "auto", objectFit: "contain", opacity: 0.55 }} />
-                <span style={{ fontSize: "0.57rem", color: "#FFB300", fontWeight: 700, letterSpacing: "0.1em" }}>MIEMBRO BLACK</span>
-              </div>
+
             </div>
             {[
               { t: "Empresa", ls: ["Nosotros", "Metodología", "Certificaciones", "Equipo"] },
