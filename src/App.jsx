@@ -443,8 +443,8 @@ export default function App() {
 
       {/* ── HERO ── */}
       <section style={{ position: "relative", height: "100vh", overflow: "hidden", display: "flex", alignItems: "flex-end", minHeight: "600px" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80')", backgroundSize: "cover", backgroundPosition: "center 30%", animation: "kb 22s ease-in-out infinite alternate" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(155deg,rgba(26,26,26,0.15) 0%,rgba(74,124,89,0.28) 35%,rgba(26,26,26,0.93) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "url('https://images.unsplash.com/photo-1515263487990-61b07816b324?w=1600&q=80')", backgroundSize: "cover", backgroundPosition: "center 30%", animation: "kb 22s ease-in-out infinite alternate" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(155deg,rgba(26,26,26,0.4) 0%,rgba(26,26,26,0.5) 35%,rgba(26,26,26,0.96) 100%)" }} />
         <div style={{ position: "relative", padding: "0 5vw 7vh", maxWidth: "860px", width: "100%" }}>
           <div style={F0}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", background: "rgba(255,255,255,0.09)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.13)", borderRadius: "100px", padding: "0.32rem 0.85rem 0.32rem 0.45rem", marginBottom: "1.8rem" }}>
@@ -617,6 +617,65 @@ export default function App() {
             </div>
           </div>
 
+
+          {/* Ingeniería Financiera card */}
+          <div style={{ background: "linear-gradient(135deg,#0a0f1a,#111827)", borderRadius: "2.2rem", padding: "2.5rem", marginBottom: "1.4rem", color: "#fff", position: "relative", overflow: "hidden", border: "1px solid rgba(74,124,89,0.18)" }}>
+            <div style={{ position: "absolute", top: "-40px", right: "-40px", width: "200px", height: "200px", background: "rgba(74,124,89,0.05)", borderRadius: "50%" }} />
+            <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "center" }}>
+              <div>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", background: `${GN}18`, borderRadius: "100px", padding: "0.28rem 0.75rem", marginBottom: "0.9rem" }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={DG} strokeWidth="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                  <span style={{ fontSize: "0.62rem", fontWeight: 700, color: DG, letterSpacing: "0.08em", fontFamily: "'JetBrains Mono',monospace" }}>INGENIERÍA FINANCIERA</span>
+                </div>
+                <h3 style={{ fontSize: "clamp(1.4rem,2.5vw,2rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1rem" }}>
+                  Punto de equilibrio{" "}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: 300, color: "rgba(255,255,255,0.65)" }}>calculado al milímetro.</span>
+                </h3>
+                <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.82 }}>Algoritmo propietario que proyecta el equilibrio financiero del edificio basado en frecuencia de entrega de unidades, cuota de mantenimiento y gastos operativos reales a 1, 5 y 10 años. Nunca más operarán en déficit.</p>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                {[
+                  ["Costos fijos vs. variables", "Separación técnica de innegocia­bles para garantizar servicios vitales sin interrupción."],
+                  ["Fondo de reserva dinámico", "Proyección de desgaste de activos a 5, 10 y 15 años. Elimina derramas extraordinarias."],
+                  ["Optimización del OPEX", "Reducción de costos operativos via eficiencia energética y contratos de escala (BMG Network)."],
+                ].map(([t, d]) => (
+                  <div key={t} style={{ background: "rgba(255,255,255,0.04)", borderRadius: "0.9rem", padding: "0.85rem 1rem", border: `1px solid ${GN}20` }}>
+                    <div style={{ fontSize: "0.72rem", fontWeight: 700, color: DG, marginBottom: "0.2rem" }}>{t}</div>
+                    <div style={{ fontSize: "0.63rem", color: "rgba(255,255,255,0.38)", lineHeight: 1.5 }}>{d}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Votación JD card */}
+          <div style={{ background: `linear-gradient(135deg,#0d1a0f,${GN}55)`, borderRadius: "2.2rem", padding: "2.5rem", marginBottom: "1.8rem", color: "#fff", position: "relative", overflow: "hidden", border: `1px solid ${GN}30` }}>
+            <div style={{ position: "absolute", top: "-30px", right: "-30px", width: "220px", height: "220px", background: "rgba(134,188,37,0.04)", borderRadius: "50%" }} />
+            <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "center" }}>
+              <div>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", background: "rgba(255,255,255,0.08)", borderRadius: "100px", padding: "0.28rem 0.75rem", marginBottom: "0.9rem" }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  <span style={{ fontSize: "0.62rem", fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.08em", fontFamily: "'JetBrains Mono',monospace" }}>SISTEMA DE VOTACIÓN JD</span>
+                </div>
+                <h3 style={{ fontSize: "clamp(1.4rem,2.5vw,2rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1rem" }}>
+                  Decisiones blindadas.{" "}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: 300 }}>Cero favoritismos.</span>
+                </h3>
+                <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.82 }}>Sistema de evaluación multicriterio de proveedores que separa técnicamente la recomendación de la decisión. La JD decide con datos, no con opiniones. Cada votación queda registrada con sello de tiempo inmutable.</p>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                {[
+                  ["Matriz 100 puntos", "Proveedores calificados por experiencia, garantías y solidez técnica. La elección es un acto técnico."],
+                  ["La Muralla China", "Administración recomienda y audita. JD decide. Línea infranqueable que protege a ambas partes."],
+                  ["Acta digital inmutable", "Sello de tiempo en cada votación. Ante cualquier cuestionamiento en Asamblea, la JD responde con datos."],
+                ].map(([t, d]) => (
+                  <div key={t} style={{ background: "rgba(255,255,255,0.06)", borderRadius: "0.9rem", padding: "0.85rem 1rem", border: "1px solid rgba(255,255,255,0.1)" }}>
+                    <div style={{ fontSize: "0.72rem", fontWeight: 700, color: "#fff", marginBottom: "0.2rem" }}>{t}</div>
+                    <div style={{ fontSize: "0.63rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.5 }}>{d}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* ISO grid */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))", gap: "0.9rem" }}>
             {ISO_ITEMS.map(({ code, title, desc }) => (
@@ -634,7 +693,7 @@ export default function App() {
       </section>
 
       {/* ── STACK ── */}
-      <div ref={stackRef} style={{ height: "380vh", position: "relative" }}>
+      <div ref={stackRef} style={{ height: "260vh", position: "relative" }}>
         <StackCard idx={0} active={activeCard} bg={`linear-gradient(135deg,${GN},#2d4f3a)`} label="Estructura viva">
           <div style={{ display: "flex", alignItems: "center", gap: "3rem", flexWrap: "wrap" }}>
             <div style={{ flex: 1, minWidth: "200px" }}>
@@ -757,8 +816,8 @@ export default function App() {
       <section ref={secContacto} style={{ padding: "7rem 5vw", background: "#fafaf8" }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
           <div>
-            <div style={{ fontSize: "0.66rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GN, marginBottom: "0.9rem" }}>Visítenos</div>
-            <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.7rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "2.2rem" }}>Nuestra oficina{" "}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: 300 }}>le espera.</span></h2>
+            <div style={{ fontSize: "0.66rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GN, marginBottom: "0.9rem" }}>Contáctenos</div>
+            <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.7rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "2.2rem" }}>Hablemos de{" "}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: 300 }}>su proyecto.</span></h2>
             {[
               { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={GN} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>, label: "Dirección", val: <>25 Avenida 1-89, Vista Hermosa 2<br />Edificio Insigne, Nivel 16, Oficina 1602<br />Guatemala, Guatemala</> },
               { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={GN} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>, label: "Teléfono", val: "42109877" },
@@ -783,13 +842,22 @@ export default function App() {
           <div style={{ background: "#fff", borderRadius: "2.2rem", padding: "2.6rem", boxShadow: "0 8px 36px rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.04)" }}>
             <div style={{ fontSize: "0.66rem", textTransform: "uppercase", letterSpacing: "0.12em", color: GN, marginBottom: "0.45rem" }}>Formulario de contacto</div>
             <h3 style={{ fontSize: "1.35rem", fontWeight: 800, marginBottom: "1.8rem", letterSpacing: "-0.02em" }}>Solicite su diagnóstico{" "}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: 300 }}>gratuito hoy.</span></h3>
-            {[{ l: "Nombre completo", t: "text", p: "Ing. Juan Pérez" }, { l: "Correo electrónico", t: "email", p: "juan@empresa.com" }, { l: "Edificio o proyecto", t: "text", p: "Nombre del inmueble" }, { l: "Número de unidades", t: "text", p: "Ej. 80 apartamentos" }].map(({ l, t, p }) => (
+            {[{ l: "Nombre completo", t: "text", p: "Ing. Juan Pérez", id: "f-nombre" }, { l: "Correo electrónico", t: "email", p: "juan@empresa.com", id: "f-correo" }, { l: "Edificio o proyecto", t: "text", p: "Nombre del inmueble", id: "f-edificio" }, { l: "Número de unidades", t: "text", p: "Ej. 80 apartamentos", id: "f-unidades" }].map(({ l, t, p, id }) => (
               <div key={l} style={{ marginBottom: "1rem" }}>
                 <label style={{ fontSize: "0.73rem", fontWeight: 600, color: "#666", display: "block", marginBottom: "0.38rem" }}>{l}</label>
-                <input type={t} placeholder={p} style={{ width: "100%", padding: "0.75rem 1rem", borderRadius: "0.85rem", border: "1px solid rgba(0,0,0,0.1)", fontSize: "0.83rem", color: CB, background: "#fafaf8" }} onFocus={e => e.target.style.borderColor = GN} onBlur={e => e.target.style.borderColor = "rgba(0,0,0,0.1)"} />
+                <input id={id} type={t} placeholder={p} style={{ width: "100%", padding: "0.75rem 1rem", borderRadius: "0.85rem", border: "1px solid rgba(0,0,0,0.1)", fontSize: "0.83rem", color: CB, background: "#fafaf8" }} onFocus={e => e.target.style.borderColor = GN} onBlur={e => e.target.style.borderColor = "rgba(0,0,0,0.1)"} />
               </div>
             ))}
-            <button className="btn" style={{ width: "100%", padding: "0.9rem", borderRadius: "100px", background: GN, color: "#fff", border: "none", cursor: "pointer", fontSize: "0.87rem", fontWeight: 700, marginTop: "0.4rem" }}>
+            <button className="btn" onClick={() => {
+              const nombre = document.getElementById('f-nombre')?.value || '';
+              const correo = document.getElementById('f-correo')?.value || '';
+              const edificio = document.getElementById('f-edificio')?.value || '';
+              const unidades = document.getElementById('f-unidades')?.value || '';
+              if (!nombre || !correo) { alert('Por favor completa nombre y correo.'); return; }
+              const subject = encodeURIComponent('Diagnóstico FMG — ' + edificio);
+              const body = encodeURIComponent('Nombre: ' + nombre + '\nCorreo: ' + correo + '\nEdificio: ' + edificio + '\nUnidades: ' + unidades);
+              window.location.href = 'mailto:josue@building-gt.com?subject=' + subject + '&body=' + body;
+            }} style={{ width: "100%", padding: "0.9rem", borderRadius: "100px", background: GN, color: "#fff", border: "none", cursor: "pointer", fontSize: "0.87rem", fontWeight: 700, marginTop: "0.4rem" }}>
               Enviar solicitud →
             </button>
           </div>
