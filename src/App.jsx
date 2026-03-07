@@ -180,140 +180,145 @@ function HappinessBadge() {
   const [open, setOpen] = useState(false);
   const [pulse, setPulse] = useState(false);
 
+  // Paleta FMG
+  const GN = "#4a7c59";
+  const DG = "#86BC25";
+  const CB = "#1A1A1A";
+
+  const DIMS = [
+    { label: "Wellness", desc: "Bienestar integral del equipo" },
+    { label: "Engagement", desc: "Compromiso y cultura" },
+    { label: "Personal Worth", desc: "Valor y desarrollo personal" },
+    { label: "Sustainability", desc: "Impacto sostenible" },
+  ];
+
   useEffect(() => {
     const t = setInterval(() => { setPulse(true); setTimeout(() => setPulse(false), 700); }, 5000);
     return () => clearInterval(t);
   }, []);
 
-  const DIMS = [
-    { label: "Wellness", desc: "Bienestar integral del equipo", color: "#7C3AED" },
-    { label: "Engagement", desc: "Compromiso y cultura", color: "#F97316" },
-    { label: "Personal Worth", desc: "Valor y desarrollo personal", color: "#7C3AED" },
-    { label: "Sustainability", desc: "Impacto sostenible", color: "#F97316" },
-  ];
-
   return (
     <>
-      {/* ── Floating badge ── */}
+      {/* ── Floating badge — usa colores FMG ── */}
       <div
         onClick={() => setOpen(true)}
         style={{
           position: "fixed", bottom: "2rem", right: "2rem", zIndex: 800,
-          background: "linear-gradient(135deg,#2d1b69,#1a0f3d)",
+          background: CB,
           borderRadius: "1.2rem",
           padding: "0.75rem 1.1rem",
-          border: "1px solid rgba(124,58,237,0.4)",
+          border: `1px solid ${GN}55`,
           boxShadow: pulse
-            ? "0 0 0 5px rgba(124,58,237,0.1), 0 16px 48px rgba(124,58,237,0.3)"
-            : "0 8px 32px rgba(45,27,105,0.5)",
+            ? `0 0 0 5px ${GN}18, 0 16px 48px rgba(0,0,0,0.35)`
+            : "0 8px 32px rgba(0,0,0,0.28)",
           cursor: "pointer",
           display: "flex", alignItems: "center", gap: "0.75rem",
           transition: "all 0.3s ease",
           userSelect: "none",
         }}
-        onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 20px 56px rgba(124,58,237,0.4)"; }}
-        onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(45,27,105,0.5)"; }}
+        onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = `0 20px 48px rgba(0,0,0,0.38), 0 0 0 1px ${GN}44`; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.28)"; }}
       >
-        {/* HC monogram */}
+        {/* HC monogram — verde FMG */}
         <div style={{
           width: "38px", height: "38px", borderRadius: "0.65rem", flexShrink: 0,
-          background: "linear-gradient(135deg,#7C3AED,#F97316)",
+          background: `linear-gradient(135deg,${GN},#2d5a3d)`,
           display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 4px 12px rgba(124,58,237,0.4)",
+          boxShadow: `0 4px 12px ${GN}55`,
         }}>
-          <span style={{ fontSize: "0.8rem", fontWeight: 900, color: "#fff", letterSpacing: "-0.03em", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>HC</span>
+          <span style={{ fontSize: "0.75rem", fontWeight: 900, color: "#fff", letterSpacing: "0.02em" }}>HC</span>
         </div>
         <div>
-          <div style={{ fontSize: "0.68rem", fontWeight: 700, color: "#fff", letterSpacing: "0.01em", fontFamily: "'Plus Jakarta Sans',sans-serif", lineHeight: 1.3 }}>Happiness Club</div>
+          <div style={{ fontSize: "0.68rem", fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>Happiness Club</div>
           <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", marginTop: "0.1rem" }}>
-            <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#F97316" }} />
-            <span style={{ fontSize: "0.62rem", fontWeight: 800, color: "#F97316", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Miembro Black</span>
+            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: DG, display: "inline-block" }} />
+            <span style={{ fontSize: "0.6rem", fontWeight: 800, color: DG, letterSpacing: "0.1em", textTransform: "uppercase" }}>Miembro Black</span>
           </div>
         </div>
       </div>
 
-      {/* ── Certificate Modal ── */}
+      {/* ── Modal certificado — paleta FMG ── */}
       {open && (
         <div
           onClick={() => setOpen(false)}
-          style={{ position: "fixed", inset: 0, zIndex: 2000, background: "rgba(0,0,0,0.82)", backdropFilter: "blur(12px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}
+          style={{ position: "fixed", inset: 0, zIndex: 2000, background: "rgba(26,26,26,0.88)", backdropFilter: "blur(14px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}
         >
           <div
             onClick={e => e.stopPropagation()}
             style={{
               position: "relative", width: "100%", maxWidth: "420px",
-              background: "#0c0a1a",
-              borderRadius: "1.5rem", overflow: "hidden",
-              border: "1px solid rgba(124,58,237,0.3)",
-              boxShadow: "0 0 0 1px rgba(249,115,22,0.1), 0 40px 80px rgba(0,0,0,0.8), 0 0 60px rgba(124,58,237,0.08)",
+              background: "#111a14",
+              borderRadius: "1.75rem", overflow: "hidden",
+              border: `1px solid ${GN}40`,
+              boxShadow: `0 0 0 1px ${DG}15, 0 40px 80px rgba(0,0,0,0.6)`,
             }}
           >
-            {/* Top gradient bar */}
-            <div style={{ height: "3px", background: "linear-gradient(90deg,#7C3AED,#F97316,#7C3AED)" }} />
+            {/* Barra superior verde lima */}
+            <div style={{ height: "3px", background: `linear-gradient(90deg,transparent,${DG},${GN},${DG},transparent)` }} />
 
             <div style={{ padding: "2rem 2rem 1.75rem" }}>
-              {/* Close */}
-              <button onClick={() => setOpen(false)} style={{ position: "absolute", top: "1rem", right: "1rem", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "50%", width: "28px", height: "28px", cursor: "pointer", color: "rgba(255,255,255,0.4)", fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1 }}>×</button>
+              {/* Cerrar */}
+              <button onClick={() => setOpen(false)} style={{ position: "absolute", top: "1rem", right: "1rem", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "50%", width: "28px", height: "28px", cursor: "pointer", color: "rgba(255,255,255,0.45)", fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
 
               {/* Header */}
               <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-                <div style={{ fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)", marginBottom: "1.2rem", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Certificado de membresía</div>
+                <div style={{ fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.2em", color: `${DG}88`, marginBottom: "1.1rem" }}>Certificado oficial de membresía</div>
 
-                {/* Big HC logo */}
+                {/* Ícono HC grande */}
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}>
-                  <div style={{ position: "relative" }}>
-                    <div style={{ width: "68px", height: "68px", borderRadius: "1.1rem", background: "linear-gradient(135deg,#7C3AED,#F97316)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 32px rgba(124,58,237,0.4), 0 2px 8px rgba(249,115,22,0.2)" }}>
-                      <span style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff", letterSpacing: "-0.04em", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>HC</span>
-                    </div>
-                    {/* Black dot badge */}
-                    <div style={{ position: "absolute", bottom: "-6px", right: "-6px", background: "#0c0a1a", borderRadius: "50%", padding: "2px", border: "1px solid rgba(249,115,22,0.4)" }}>
-                      <div style={{ width: "16px", height: "16px", borderRadius: "50%", background: "linear-gradient(135deg,#1a1a1a,#2a2a2a)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#111" }} />
-                      </div>
-                    </div>
+                  <div style={{
+                    width: "72px", height: "72px", borderRadius: "1.2rem",
+                    background: `linear-gradient(135deg,${GN},#2d5a3d)`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    boxShadow: `0 8px 28px ${GN}50`,
+                    border: `1px solid ${GN}60`,
+                  }}>
+                    <span style={{ fontSize: "1.5rem", fontWeight: 900, color: "#fff", letterSpacing: "0.02em" }}>HC</span>
                   </div>
                 </div>
 
-                <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Happiness Club</div>
-                <div style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", marginTop: "0.5rem", background: "linear-gradient(135deg,rgba(124,58,237,0.15),rgba(249,115,22,0.15))", borderRadius: "100px", padding: "0.3rem 0.9rem", border: "1px solid rgba(249,115,22,0.25)" }}>
-                  <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#F97316" }} />
-                  <span style={{ fontSize: "0.65rem", fontWeight: 800, color: "#F97316", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Miembro Black</span>
+                <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.01em" }}>Happiness Club</div>
+
+                {/* Pill BLACK */}
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", marginTop: "0.55rem", background: `${DG}18`, borderRadius: "100px", padding: "0.3rem 0.85rem", border: `1px solid ${DG}35` }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: DG, display: "inline-block" }} />
+                  <span style={{ fontSize: "0.63rem", fontWeight: 800, color: DG, letterSpacing: "0.12em", textTransform: "uppercase" }}>Miembro Black</span>
                 </div>
               </div>
 
-              {/* Divider */}
-              <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,rgba(124,58,237,0.3),rgba(249,115,22,0.3),transparent)", marginBottom: "1.3rem" }} />
+              {/* Divisor */}
+              <div style={{ height: "1px", background: `linear-gradient(90deg,transparent,${GN}50,transparent)`, marginBottom: "1.3rem" }} />
 
-              {/* Member */}
-              <div style={{ textAlign: "center", marginBottom: "1.3rem" }}>
-                <div style={{ fontSize: "0.58rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.3)", marginBottom: "0.4rem", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Otorgado a</div>
-                <div style={{ fontSize: "0.98rem", fontWeight: 800, color: "#fff", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Facilities Management</div>
-                <div style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.38)", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>de Guatemala S.A.</div>
+              {/* Miembro */}
+              <div style={{ textAlign: "center", marginBottom: "1.3rem", background: `${GN}12`, borderRadius: "1rem", padding: "1rem", border: `1px solid ${GN}20` }}>
+                <div style={{ fontSize: "0.58rem", textTransform: "uppercase", letterSpacing: "0.14em", color: `${DG}70`, marginBottom: "0.4rem" }}>Otorgado a</div>
+                <div style={{ fontSize: "1rem", fontWeight: 800, color: "#fff" }}>Facilities Management</div>
+                <div style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.4)", marginTop: "0.1rem" }}>de Guatemala S.A.</div>
               </div>
 
-              {/* 4 Dimensions */}
+              {/* 4 Dimensiones */}
               <div style={{ marginBottom: "1.3rem" }}>
-                <div style={{ fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.16em", color: "rgba(255,255,255,0.28)", marginBottom: "0.7rem", textAlign: "center", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Certificación en 4 dimensiones</div>
+                <div style={{ fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.16em", color: "rgba(255,255,255,0.3)", marginBottom: "0.65rem", textAlign: "center" }}>Certificación en 4 dimensiones</div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem" }}>
-                  {DIMS.map((d, i) => (
-                    <div key={d.label} style={{ padding: "0.75rem 0.9rem", borderRadius: "0.75rem", background: "rgba(255,255,255,0.03)", border: `1px solid ${d.color}30`, position: "relative", overflow: "hidden" }}>
-                      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg,${d.color},${d.color}00)` }} />
-                      <div style={{ fontSize: "0.73rem", fontWeight: 700, color: "#fff", marginBottom: "0.2rem", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{d.label}</div>
-                      <div style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.4, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{d.desc}</div>
+                  {DIMS.map((d) => (
+                    <div key={d.label} style={{ padding: "0.75rem 0.9rem", borderRadius: "0.75rem", background: `${GN}0f`, border: `1px solid ${GN}28`, position: "relative", overflow: "hidden" }}>
+                      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg,${DG},${GN})` }} />
+                      <div style={{ fontSize: "0.73rem", fontWeight: 700, color: "#fff", marginBottom: "0.2rem" }}>{d.label}</div>
+                      <div style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.38)", lineHeight: 1.4 }}>{d.desc}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Footer */}
-              <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent)", marginBottom: "1rem" }} />
-              <div style={{ textAlign: "center", fontSize: "0.53rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.18)", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+              <div style={{ height: "1px", background: `linear-gradient(90deg,transparent,${GN}30,transparent)`, marginBottom: "1rem" }} />
+              <div style={{ textAlign: "center", fontSize: "0.53rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.2)" }}>
                 Certificación vigente · Guatemala {new Date().getFullYear()}
               </div>
             </div>
 
-            {/* Bottom gradient bar */}
-            <div style={{ height: "3px", background: "linear-gradient(90deg,#7C3AED,#F97316,#7C3AED)" }} />
+            {/* Barra inferior */}
+            <div style={{ height: "3px", background: `linear-gradient(90deg,transparent,${GN},${DG},${GN},transparent)` }} />
           </div>
         </div>
       )}
