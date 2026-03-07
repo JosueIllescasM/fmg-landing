@@ -326,6 +326,174 @@ function HappinessBadge() {
   );
 }
 
+
+// ─── PRIVATE ZONE ─────────────────────────────────────────────────────────────
+const SYSTEMS = [
+  {
+    id: "erp",
+    name: "ERP FMG",
+    desc: "Sistema integral de gestión operativa",
+    tag: "ERP CORE",
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
+    url: "https://erpfacilities.netlify.app",
+    color: "#86BC25",
+  },
+  {
+    id: "52wppm",
+    name: "52WPPM",
+    desc: "Work Package Planning & Management",
+    tag: "PLANIFICACIÓN",
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>,
+    url: "https://52wppm.netlify.app",
+    color: "#4a7c59",
+  },
+  {
+    id: "ing-fin",
+    name: "Ingeniería Financiera",
+    desc: "Punto de equilibrio y proyecciones a 1, 5 y 10 años",
+    tag: "FINANZAS",
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>,
+    url: "https://bmgfinanzas.netlify.app",
+    color: "#86BC25",
+  },
+  {
+    id: "vot-jd",
+    name: "Votación JD",
+    desc: "Sistema de evaluación y blindaje decisional",
+    tag: "GOBERNANZA",
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>,
+    url: "https://proveedoresfmg.netlify.app",
+    color: "#4a7c59",
+  },
+];
+
+function PrivateZone() {
+  const [email, setEmail] = useState("");
+  const [authed, setAuthed] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const GN = "#4a7c59";
+  const DG = "#86BC25";
+
+  function handleAccess() {
+    setError("");
+    const trimmed = email.trim().toLowerCase();
+    if (!trimmed.includes("@")) { setError("Ingresa un correo válido."); return; }
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      if (trimmed.endsWith("@building-gt.com")) {
+        setAuthed(true);
+      } else {
+        setError("Acceso denegado. Solo usuarios @building-gt.com pueden ingresar.");
+      }
+    }, 900);
+  }
+
+  if (!authed) {
+    return (
+      <div style={{ maxWidth: "420px", margin: "0 auto" }}>
+        <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: "1.8rem", padding: "2.5rem", border: "1px solid rgba(74,124,89,0.2)", boxShadow: "0 20px 60px rgba(0,0,0,0.4)" }}>
+          {/* Ícono candado */}
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.8rem" }}>
+            <div style={{ width: "64px", height: "64px", borderRadius: "1.1rem", background: "linear-gradient(135deg,#0d1a0f,#162414)", border: "1px solid rgba(74,124,89,0.3)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 24px rgba(0,0,0,0.3)" }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={DG} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+          </div>
+          <div style={{ textAlign: "center", marginBottom: "1.8rem" }}>
+            <div style={{ fontSize: "1rem", fontWeight: 800, color: "#fff", marginBottom: "0.4rem" }}>Verificación de identidad</div>
+            <div style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.65 }}>Ingresa tu correo corporativo para acceder a los portales de gestión.</div>
+          </div>
+          <div style={{ marginBottom: "0.9rem" }}>
+            <input
+              type="email"
+              placeholder="tu.nombre@building-gt.com"
+              value={email}
+              onChange={e => { setEmail(e.target.value); setError(""); }}
+              onKeyDown={e => e.key === "Enter" && handleAccess()}
+              style={{ width: "100%", padding: "0.8rem 1.1rem", borderRadius: "0.85rem", border: error ? "1px solid #ef4444" : "1px solid rgba(74,124,89,0.3)", fontSize: "0.85rem", color: "#fff", background: "rgba(255,255,255,0.05)", boxSizing: "border-box", outline: "none" }}
+              onFocus={e => { if (!error) e.target.style.borderColor = DG; }}
+              onBlur={e => { if (!error) e.target.style.borderColor = "rgba(74,124,89,0.3)"; }}
+            />
+          </div>
+          {error && (
+            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", marginBottom: "0.9rem", padding: "0.6rem 0.9rem", background: "rgba(239,68,68,0.1)", borderRadius: "0.7rem", border: "1px solid rgba(239,68,68,0.2)" }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span style={{ fontSize: "0.72rem", color: "#ef4444" }}>{error}</span>
+            </div>
+          )}
+          <button
+            onClick={handleAccess}
+            disabled={loading}
+            style={{ width: "100%", padding: "0.85rem", borderRadius: "100px", background: loading ? "rgba(74,124,89,0.5)" : GN, color: "#fff", border: "none", cursor: loading ? "default" : "pointer", fontSize: "0.85rem", fontWeight: 700, transition: "all 0.2s", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem" }}
+          >
+            {loading ? (
+              <>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" style={{ animation: "spin 1s linear infinite" }}><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                Verificando…
+              </>
+            ) : (
+              <>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                Ingresar a la Zona Privada
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Dashboard autenticado ──
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", maxWidth: "680px", margin: "0 auto 2rem", padding: "0.7rem 1.2rem", background: "rgba(74,124,89,0.1)", borderRadius: "100px", border: "1px solid rgba(74,124,89,0.25)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill={DG}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span style={{ fontSize: "0.72rem", color: DG, fontWeight: 600 }}>Acceso verificado</span>
+          <span style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.35)", fontFamily: "'JetBrains Mono',monospace" }}>{email}</span>
+        </div>
+        <button onClick={() => { setAuthed(false); setEmail(""); }} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.68rem", color: "rgba(255,255,255,0.3)", padding: "0.2rem 0.5rem" }}>Cerrar sesión</button>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px,1fr))", gap: "1rem", maxWidth: "1080px", margin: "0 auto" }}>
+        {SYSTEMS.map(sys => (
+          <a
+            key={sys.id}
+            href={sys.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none", display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.03)", borderRadius: "1.5rem", padding: "1.8rem", border: "1px solid rgba(74,124,89,0.18)", transition: "all 0.25s", cursor: "pointer", position: "relative", overflow: "hidden" }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(74,124,89,0.1)"; e.currentTarget.style.borderColor = "rgba(74,124,89,0.4)"; e.currentTarget.style.transform = "translateY(-3px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.03)"; e.currentTarget.style.borderColor = "rgba(74,124,89,0.18)"; e.currentTarget.style.transform = "translateY(0)"; }}
+          >
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(90deg,${sys.color},transparent)` }} />
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.2rem" }}>
+              <div style={{ width: "44px", height: "44px", borderRadius: "0.85rem", background: `${sys.color}18`, display: "flex", alignItems: "center", justifyContent: "center", color: sys.color }}>
+                {sys.icon}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", background: "rgba(255,255,255,0.05)", borderRadius: "100px", padding: "0.22rem 0.6rem" }}>
+                <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: DG }} />
+                <span style={{ fontSize: "0.55rem", fontWeight: 700, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em", textTransform: "uppercase" }}>Activo</span>
+              </div>
+            </div>
+            <div style={{ fontSize: "0.6rem", textTransform: "uppercase", letterSpacing: "0.1em", color: `${sys.color}99`, marginBottom: "0.35rem", fontFamily: "'JetBrains Mono',monospace" }}>{sys.tag}</div>
+            <div style={{ fontSize: "0.95rem", fontWeight: 800, color: "#fff", marginBottom: "0.35rem" }}>{sys.name}</div>
+            <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.38)", lineHeight: 1.6, flexGrow: 1 }}>{sys.desc}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", marginTop: "1.2rem", color: sys.color, fontSize: "0.75rem", fontWeight: 600 }}>
+              Acceder al portal
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const TESTIMONIALS = [
   { building: "Edificio Azores", zone: "Zona 15", quote: "La transformación fue inmediata. FMG redujo nuestros costos de mantenimiento un 28% en el primer año. La comunicación con propietarios es ahora completamente transparente.", name: "Junta Directiva", role: "Edificio Azores" },
@@ -337,6 +505,7 @@ const TESTIMONIALS = [
   { building: "Laureles San Isidro", zone: "San Isidro", quote: "La atención es excepcional. Respuesta a cualquier incidencia en menos de 2 horas y reportes financieros mensuales que son modelos de claridad.", name: "Junta de Propietarios", role: "Laureles San Isidro" },
   { building: "Dante Kanajuyu", zone: "Kanajuyu", quote: "Desde que FMG tomó la administración, el valor de nuestras unidades aumentó. Una gestión profesional se refleja directamente en la plusvalía del inmueble.", name: "Asamblea de Propietarios", role: "Dante Kanajuyu" },
   { building: "Torre Seis", zone: "Zona 6", quote: "FMG nos asesoró en el plan operativo antes de la entrega del edificio. Esa visión de largo plazo nos permitió arrancar con sistemas sólidos desde el primer día.", name: "Desarrolladores y Junta", role: "Torre Seis" },
+  { building: "Monet Apartamentos", zone: "Piedra Parada Cristo Rey", quote: "FMG trajo orden, visibilidad y profesionalismo a nuestra comunidad desde el primer día. Su metodología estructurada nos permitió tomar decisiones con certeza y con datos reales.", name: "Junta Directiva", role: "Monet Apartamentos" },
 ];
 
 const ISO_ITEMS = [
@@ -734,7 +903,7 @@ export default function App() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "2rem", marginBottom: "3.5rem" }}>
             <div>
               <div style={{ fontSize: "0.66rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GN, marginBottom: "0.9rem" }}>Nuestros clientes</div>
-              <h2 style={{ fontSize: "clamp(1.8rem,3.8vw,2.9rem)", fontWeight: 800, letterSpacing: "-0.03em", color: "#fff", lineHeight: 1.1 }}>9 propiedades.{" "}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: 300, color: "rgba(255,255,255,0.48)" }}>Una exigencia: la excelencia.</span></h2>
+              <h2 style={{ fontSize: "clamp(1.8rem,3.8vw,2.9rem)", fontWeight: 800, letterSpacing: "-0.03em", color: "#fff", lineHeight: 1.1 }}>10 propiedades.{" "}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: 300, color: "rgba(255,255,255,0.48)" }}>Una exigencia: la excelencia.</span></h2>
             </div>
             <div style={{ display: "flex", gap: "0.45rem", flexWrap: "wrap" }}>
               {TESTIMONIALS.map((_, i) => (
@@ -742,33 +911,33 @@ export default function App() {
               ))}
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.8rem", alignItems: "start" }}>
-            <div key={tIdx} style={{ background: "rgba(255,255,255,0.04)", borderRadius: "2.2rem", padding: "2.6rem", border: "1px solid rgba(255,255,255,0.08)" }}>
-              <div style={{ display: "flex", gap: "2px", marginBottom: "1.3rem" }}>
-                {[1, 2, 3, 4, 5].map(s => (<svg key={s} width="13" height="13" viewBox="0 0 24 24" fill={DG}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>))}
+          {/* Tarjeta de testimonio — centrada */}
+          <div style={{ maxWidth: "680px", margin: "0 auto", marginBottom: "2.5rem" }}>
+            <div key={tIdx} style={{ background: "rgba(255,255,255,0.04)", borderRadius: "2.2rem", padding: "2.8rem 3rem", border: "1px solid rgba(255,255,255,0.08)", textAlign: "center" }}>
+              <div style={{ display: "flex", justifyContent: "center", gap: "3px", marginBottom: "1.5rem" }}>
+                {[1, 2, 3, 4, 5].map(s => (<svg key={s} width="15" height="15" viewBox="0 0 24 24" fill={DG}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>))}
               </div>
-              <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.88, marginBottom: "1.8rem", fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic" }}>"{TESTIMONIALS[tIdx].quote}"</p>
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.3rem", display: "flex", alignItems: "center", gap: "0.9rem" }}>
-                <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: `${GN}28`, display: "flex", alignItems: "center", justifyContent: "center", color: GN, flexShrink: 0 }}>
+              <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.9, marginBottom: "2rem", fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic" }}>"{TESTIMONIALS[tIdx].quote}"</p>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.3rem", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.9rem" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: `${GN}28`, display: "flex", alignItems: "center", justifyContent: "center", color: GN, flexShrink: 0 }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
                 </div>
-                <div>
-                  <div style={{ fontWeight: 700, color: "#fff", fontSize: "0.86rem" }}>{TESTIMONIALS[tIdx].name}</div>
+                <div style={{ textAlign: "left" }}>
+                  <div style={{ fontWeight: 700, color: "#fff", fontSize: "0.88rem" }}>{TESTIMONIALS[tIdx].name}</div>
                   <div style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.38)" }}>{TESTIMONIALS[tIdx].role}</div>
                 </div>
               </div>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              {TESTIMONIALS.map((t, i) => (
-                <button key={i} onClick={() => setTIdx(i)} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0.7rem 1rem", borderRadius: "0.9rem", background: i === tIdx ? "rgba(74,124,89,0.2)" : "rgba(255,255,255,0.03)", border: i === tIdx ? "1px solid rgba(74,124,89,0.38)" : "1px solid transparent", cursor: "pointer", transition: "all 0.2s ease", textAlign: "left" }}>
-                  <div>
-                    <div style={{ fontSize: "0.8rem", fontWeight: 600, color: i === tIdx ? "#fff" : "rgba(255,255,255,0.42)" }}>{t.building}</div>
-                    <div style={{ fontSize: "0.63rem", color: "rgba(255,255,255,0.24)" }}>{t.zone}</div>
-                  </div>
-                  {i === tIdx && (<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={GN} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>)}
-                </button>
-              ))}
-            </div>
+          </div>
+          {/* Grid de proyectos — 5 columnas x 2 filas */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: "0.55rem" }}>
+            {TESTIMONIALS.map((t, i) => (
+              <button key={i} onClick={() => setTIdx(i)} style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "0.75rem 0.5rem", borderRadius: "0.9rem", background: i === tIdx ? "rgba(74,124,89,0.22)" : "rgba(255,255,255,0.03)", border: i === tIdx ? `1px solid ${GN}55` : "1px solid transparent", cursor: "pointer", transition: "all 0.2s ease", textAlign: "center" }}>
+                <div style={{ fontSize: "0.75rem", fontWeight: 600, color: i === tIdx ? "#fff" : "rgba(255,255,255,0.45)", lineHeight: 1.3, marginBottom: "0.2rem" }}>{t.building}</div>
+                <div style={{ fontSize: "0.58rem", color: "rgba(255,255,255,0.22)" }}>{t.zone}</div>
+                {i === tIdx && <div style={{ width: "18px", height: "2px", background: GN, borderRadius: "2px", marginTop: "0.4rem" }} />}
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -876,6 +1045,28 @@ export default function App() {
         </div>
       </section>
 
+
+      {/* ── ZONA PRIVADA ── */}
+      <section style={{ padding: "7rem 5vw", background: "#0a0f0a", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(74,124,89,0.08), transparent)" }} />
+        {/* Grid de puntos decorativo */}
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(134,188,37,0.08) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
+        <div style={{ position: "relative", maxWidth: "1080px", margin: "0 auto" }}>
+          {/* Header */}
+          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(74,124,89,0.12)", borderRadius: "100px", padding: "0.35rem 1rem", border: "1px solid rgba(74,124,89,0.25)", marginBottom: "1.2rem" }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#86BC25" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span style={{ fontSize: "0.6rem", fontWeight: 700, color: "#86BC25", letterSpacing: "0.14em", textTransform: "uppercase" }}>Acceso Restringido</span>
+            </div>
+            <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.7rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "0.9rem" }}>
+              Zona de{" "}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: 300, color: "#86BC25" }}>Excelencia Operativa.</span>
+            </h2>
+            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.35)", maxWidth: "420px", margin: "0 auto", lineHeight: 1.75 }}>Portales privados de gestión. Acceso exclusivo para usuarios con dominio <span style={{ color: "rgba(134,188,37,0.7)", fontFamily: "'JetBrains Mono',monospace" }}>@building-gt.com</span></p>
+          </div>
+
+          <PrivateZone />
+        </div>
+      </section>
       {/* ── FOOTER ── */}
       <footer style={{ background: CB, borderTop: "1px solid rgba(255,255,255,0.055)", padding: "3.5rem 5vw 2rem" }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
