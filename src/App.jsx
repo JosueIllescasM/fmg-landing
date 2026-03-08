@@ -444,34 +444,7 @@ function PrivateZone() {
             )}
           </button>
 
-          {/* Divisor */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", margin: "1.4rem 0 1.1rem" }}>
-            <div style={{ flex: 1, height: "1px", background: "rgba(255,255,255,0.07)" }} />
-            <span style={{ fontSize: "0.62rem", color: "rgba(255,255,255,0.22)", textTransform: "uppercase", letterSpacing: "0.1em" }}>o bien</span>
-            <div style={{ flex: 1, height: "1px", background: "rgba(255,255,255,0.07)" }} />
-          </div>
 
-          {/* PayPal CTA */}
-          <div style={{ background: "rgba(0,48,135,0.18)", borderRadius: "1.2rem", padding: "1.2rem 1.4rem", border: "1px solid rgba(0,112,240,0.2)" }}>
-            <div style={{ fontSize: "0.6rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)", marginBottom: "0.5rem" }}>Servicios internacionales</div>
-            <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "#fff", marginBottom: "0.3rem" }}>Solicitar acceso o contratar</div>
-            <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.38)", lineHeight: 1.55, marginBottom: "0.9rem" }}>Paga de forma segura con PayPal desde cualquier parte del mundo.</div>
-            <a
-              href="https://www.paypal.com/paypalme/fmgguatemala"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", width: "100%", padding: "0.72rem", borderRadius: "100px", background: "#0070f0", color: "#fff", textDecoration: "none", fontSize: "0.82rem", fontWeight: 700, transition: "background 0.2s", boxSizing: "border-box" }}
-              onMouseEnter={e => e.currentTarget.style.background = "#005ac2"}
-              onMouseLeave={e => e.currentTarget.style.background = "#0070f0"}
-            >
-              {/* PayPal logo mark */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.02 21H4.5L6.5 8h5c2.5 0 4.5 1 4 3.5C15 14 13 15.5 10.5 15.5H8.5L7.02 21Z" fill="#fff" opacity="0.9"/>
-                <path d="M10.02 18H7.5L9.5 5h5c2.5 0 4.5 1 4 3.5C18 11 16 12.5 13.5 12.5H11.5L10.02 18Z" fill="#fff"/>
-              </svg>
-              Pagar con PayPal
-            </a>
-          </div>
         </div>
       </div>
     );
@@ -665,7 +638,7 @@ export default function App() {
             </div>
           </div>
           <div style={{ ...F3, marginTop: "2.8rem", display: "flex", gap: "2.8rem", flexWrap: "wrap" }}>
-            {[["9", "Proyectos activos"], ["15+", "Años de trayectoria"], ["Q350M+", "En activos gestionados"]].map(([v, l]) => (
+            {[["10", "Proyectos activos"], ["15+", "Años de trayectoria"], ["Q350M+", "En activos gestionados"], ["+Q20M", "Recaudo al año"]].map(([v, l]) => (
               <div key={v}>
                 <div style={{ fontSize: "1.35rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>{v}</div>
                 <div style={{ fontSize: "0.66rem", color: "rgba(255,255,255,0.42)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "0.2rem" }}>{l}</div>
